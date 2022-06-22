@@ -2,6 +2,7 @@
 #include <assert.h>
 
 #define ALERT_THRESHOLD_LEVEL 200
+#define PRODUCTION_CODE_ENABLE  STD_OFF
 int alertFailureCount = 0;
 
 
