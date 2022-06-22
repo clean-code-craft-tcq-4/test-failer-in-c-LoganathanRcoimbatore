@@ -4,6 +4,9 @@
 #define ALERT_THRESHOLD_LEVEL 200
 int alertFailureCount = 0;
 
+
+#if (PRODUCTION_CODE_ENABLE == STD_OFF)
+
 int networkAlertStub(float celcius) {
     printf("ALERT: Temperature is %.1f celcius.\n", celcius);
     // Return 200 for ok
@@ -24,9 +27,10 @@ int Alert_test(float celcius)
              assert(alertFailureCount != 0);    
         }  
 }
-
+#endif
 void alertInCelcius(float farenheit) {
     float celcius = (farenheit - 32) * 5 / 9;
+    #if (PRODUCTION_CODE_ENABLE == STD_OFF)
     int returnCode = networkAlertStub(celcius);
    
     if (returnCode != 200) {
@@ -37,7 +41,7 @@ void alertInCelcius(float farenheit) {
         alertFailureCount += 0;
     }
    Alert_test(celcius);
-  
+  #endif
 }
 
 int main() {
