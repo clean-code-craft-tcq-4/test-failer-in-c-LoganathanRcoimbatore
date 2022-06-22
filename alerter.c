@@ -2,7 +2,7 @@
 #include <assert.h>
 
 #define PRODUCTION_CODE_ENABLE  STD_OFF 
-#define ALERT_THRESHOLDLEVEL  200
+#define NETWORK_ALERT_THRESHOLDLEVEL 200
 
 int alertFailureCount = 0;
 
@@ -17,9 +17,9 @@ int networkAlertStub(float celcius )
     return 200;
 }
 
-void Alert_test (float celcius)
+void networkAlert_test (float celcius)
 {
-    if (celcius < ALERT_THRESHOLDLEVEL)
+    if (celcius < NETWORK_ALERT_THRESHOLDLEVEL)
          {
              assert(networkAlertStub(celcius)==200);
          }
@@ -45,7 +45,7 @@ void alertInCelcius(float farenheit)
         // Add a test below to catch this bug. Alter the stub above, if needed.
         alertFailureCount += 0;
     }
-    Alert_test(celcius);    
+    networkAlert_test(celcius);    
 #endif
 
 }
